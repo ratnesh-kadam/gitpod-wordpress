@@ -70,7 +70,7 @@ function wp-setup () {
   PROJECT_PATH=${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/wp-content/$1/${REPO_NAME}
   mkdir -p $PROJECT_PATH
   mv $HOME/workspace/* ${PROJECT_PATH}
-  cd $DESTINATION
+  cd $PROJECT_PATH
 
   # install project dependencies
   if [ -f composer.json ]; then
@@ -80,7 +80,7 @@ function wp-setup () {
   
   if [ -f package.json ]; then
     echo 'Installing NPM packages ...'
-    npm i 2> /dev/null
+    npm install 2> /dev/null
   fi
 
   if [ -f ${PROJECT_PATH}/.init.sh ]; then
