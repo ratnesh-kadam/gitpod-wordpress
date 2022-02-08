@@ -71,13 +71,16 @@ function wp-setup () {
   mkdir -p $PROJECT_PATH
   mv $HOME/workspace/* ${PROJECT_PATH}
   cd $PROJECT_PATH
+  echo $PROJECT_PATH
+  ls
 
   # install project dependencies
   if [ -f composer.json ]; then
     echo 'Installing Composer packages ...'
     composer update 2> /dev/null
   fi
-  
+
+  echo 'before Installing NPM packages ...'
   if [ -f package.json ]; then
     echo 'Installing NPM packages ...'
     npm install 2> /dev/null
