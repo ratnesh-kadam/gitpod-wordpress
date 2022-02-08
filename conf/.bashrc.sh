@@ -80,16 +80,17 @@ function wp-setup () {
     composer update 2> /dev/null
   fi
 
-  echo 'before Installing NPM packages ...'
-  if [ -f package.json ]; then
-    echo 'Installing NPM packages ...'
+  echo 'before Installing NPM packages ....'
+  if [ -f ${PROJECT_PATH}/package.json ]; then
+    cd $PROJECT_PATH
+    echo 'Installing NPM packages ....'
     npm install 2> /dev/null
   fi
 
   if [ -f ${PROJECT_PATH}/.init.sh ]; then
-    echo '.init.sh detected ...'
+    echo '.init.sh detected ....'
     cp ${PROJECT_PATH}/.init.sh ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/.init.sh
-    echo 'Running your .init.sh ...'
+    echo 'Running your .init.sh ....'
     cd ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/
     /bin/bash ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/.init.sh
     rm -rf ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/.init.sh
