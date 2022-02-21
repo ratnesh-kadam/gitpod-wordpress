@@ -103,6 +103,66 @@ function wp-setup () {
   echo 'Done!'
 }
 
+function wp-setup-core () {
+  FLAG="$HOME/.wordpress-installed"
+
+  # search the flag file
+  if [ -f $FLAG ]; then
+    echo 'WordPress already installed'
+    return 1
+  fi
+
+  echo 'Please, wait ...'
+
+  # this would cause mv below to match hidden files
+  shopt -s dotglob
+  
+  # move the workspace temporarily
+  mkdir $HOME/workspace
+  mv ${GITPOD_REPO_ROOT}/* $HOME/workspace/
+  
+  # create a debugger launch.json
+  mkdir -p ${GITPOD_REPO_ROOT}/.theia
+  mv $HOME/gitpod-wordpress/conf/launch.json ${GITPOD_REPO_ROOT}/.theia/launch.json
+  
+  # create a database for this WordPress
+  echo 'Creating MySQL user and database ...'
+  wp-init-database 1> /dev/null
+  
+  # install WordPress
+  
+  rm -rf ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}
+  mkdir -p ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}
+  cd ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/
+  
+  echo 'Downloading WordPress ...'
+  wp core download --path="${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/"
+  
+  echo 'Installing WordPress ...'
+  cp $HOME/gitpod-wordpress/conf/wp-config.php ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/wp-config.php
+  wp core install \
+    --url="$(gp url 8080 | sed -e s/https:\\/\\/// | sed -e s/\\///)" \
+    --title="WordPress" \
+    --admin_user="admin" \
+    --admin_password="password" \
+    --admin_email="admin@gitpod.test" \
+    --path="${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/"
+
+  echo 'Downloading Adminer ...'
+  mkdir ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/database/
+  wget -q https://www.adminer.org/latest.php -O ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/database/index.php
+  
+  echo 'Creating phpinfo() page ...'
+  mkdir ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/phpinfo/
+  echo "<?php phpinfo(); ?>" > ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/phpinfo/index.php
+  
+  # finish
+  shopt -u dotglob
+  touch $FLAG
+  
+  echo 'Done!'
+}
+
 function wp-setup-theme () {
   wp-setup "themes"
 }
