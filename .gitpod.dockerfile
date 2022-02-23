@@ -10,7 +10,7 @@ ENV APACHE_DOCROOT="public_html"
 ### Setups, Node, NPM ###
 USER gitpod
 ADD https://api.wordpress.org/secret-key/1.1/salt?rnd=152634 /dev/null
-RUN git clone https://github.com/ratnesh-kadam/gitpod-wordpress $HOME/gitpod-wordpress && \
+RUN git clone https://github.com/luizbills/gitpod-wordpress $HOME/gitpod-wordpress && \
     cat $HOME/gitpod-wordpress/conf/.bashrc.sh >> $HOME/.bashrc && \
     . $HOME/.bashrc && \
     bash -c ". .nvm/nvm.sh && nvm install --lts"
@@ -25,8 +25,8 @@ RUN go get github.com/mailhog/MailHog && \
     ln $GOPATH/bin/mhsendmail /usr/sbin/sendmail && \
     ln $GOPATH/bin/mhsendmail /usr/bin/mail &&\
     ### Apache ###
-    apt-get update && \
-    apt-get remove --purge apache2 apache2-data apache2-utils && \
+    apt-get update && \ 
+    apt-get remove --purge apache2 apache2-data apache2-utils && \ 
     rm -rf /etc/apache2 && \
     apt-get -y install apache2 && \
     chown -R gitpod:gitpod /var/run/apache2 /var/lock/apache2 /var/log/apache2 && \
