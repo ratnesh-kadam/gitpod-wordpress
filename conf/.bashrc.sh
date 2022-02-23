@@ -173,6 +173,7 @@ function wp-setup-plugin () {
 
 export -f wp-setup-theme
 export -f wp-setup-plugin
+export -f wp-setup-core
 
 # Helpers
 function browse-url () {
