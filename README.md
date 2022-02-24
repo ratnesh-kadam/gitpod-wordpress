@@ -20,7 +20,7 @@
 - Just fork the repository and click on gitpod button appearing on github repository
 
 4. For theme and plugin
-- Just copy the [`.gitpod.yml`](/.gitpod.yml) and [`.gitpod.dockerfile`](/.gitpod.dockerfile) to your project root directory and push to your remote repository.
+- Copy the [`.gitpod.yml`](/.gitpod.yml) and [`.gitpod.dockerfile`](/.gitpod.dockerfile) to your project root directory and push to your remote repository.
 - If your project is a theme, change the `wp-setup-core` to `wp-setup-theme` or `wp-setup-plugin` in your `.gitpod.yml`.
 
 5. For theme and plugin, the `wp-setup-plugin` (or `wp-setup-theme`) will search for a `.init.sh` file in your project root directory and execute it (if exists). Then, you can use the `wp-cli` to install plugins, install themes, and [more](https://developer.wordpress.org/cli/commands/). Or create your own tasks. 
