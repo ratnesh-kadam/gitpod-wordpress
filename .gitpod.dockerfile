@@ -1,5 +1,5 @@
 # Gitpod docker image for WordPress | https://github.com/ratnesh-kadam/gitpod-wordpress
-# License: MIT (c) 2020 Luiz Paulo "Bills"
+# License: MIT (c) 2020
 # Version: 0.8
 FROM gitpod/workspace-mysql
 
