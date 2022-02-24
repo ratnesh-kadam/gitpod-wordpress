@@ -2,7 +2,6 @@
 
 [Gitpod](https://www.gitpod.io) is a ready-to-code dev environment with a single click. It will allows you to develop plugin or theme directly from your browser.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ratnesh-kadam/gitpod-wordpress)
 
 ## Features
 
@@ -19,26 +18,29 @@
 
 ## Install
 
-Just copy the [`.gitpod.yml`](/.gitpod.yml) and [`.gitpod.dockerfile`](/.gitpod.dockerfile) to your project root directory and push to your remote repository.
+1. Documentation on how to integrate github with GitPod - [https://www.gitpod.io/docs/github-integration](https://www.gitpod.io/docs/github-integration)
 
-- If your project is a theme, change the `wp-setup-plugin` to `wp-setup-theme` in your `.gitpod.yml`.
-- By default, the webserver will use PHP `v7.3`. If you need a different version, change it on `ENV PHP_VERSION` in your `.gitpod.dockerfile` (line 4).
+2. For clean WordPress instance
+- Just fork the repository and click on gitpod button appearing on github repository
 
-Also, the `wp-setup-plugin` (or `wp-setup-theme`) will search for a `.init.sh` file in your project root directory and execute it (if exists). Then, you can use the `wp-cli` to install plugins, install themes, and [more](https://developer.wordpress.org/cli/commands/). Or create your own tasks. 
+3. For theme and plugin
+- Just copy the [`.gitpod.yml`](/.gitpod.yml) and [`.gitpod.dockerfile`](/.gitpod.dockerfile) to your project root directory and push to your remote repository.
+- If your project is a theme, change the `wp-setup-core` to `wp-setup-theme` or `wp-setup-plugin` in your `.gitpod.yml`.
+
+4. For theme and plugin, the `wp-setup-plugin` (or `wp-setup-theme`) will search for a `.init.sh` file in your project root directory and execute it (if exists). Then, you can use the `wp-cli` to install plugins, install themes, and [more](https://developer.wordpress.org/cli/commands/). Or create your own tasks. 
 
 ```sh
 # .init.sh
 wp plugin install woocommerce --activate # install WooCommerce
 wp plugin activate ${REPO_NAME} # activate your plugin
+wp theme activate ${REPO_NAME} # activate your theme
 ```
-
-Project dependencies (in `composer.json` or `package.json`) are automatically installed.
 
 ## Usage
 
 Now you access `https://gitpod.io/#<url-of-your-github-project>`.
 
-> Example: [https://gitpod.io/#https://github.com/ratnesh-kadam/responsive/](https://gitpod.io/#https://github.com/ratnesh-kadam/responsive/)
+> Example: [https://gitpod.io/#https://github.com/ratnesh-kadam/gitpod-wordpress/](https://gitpod.io/#https://github.com/ratnesh-kadam/gitpod-wordpress/)
 
 Your admin credentials:
 
@@ -75,8 +77,4 @@ Just found a bug? Report it on GitHub [Issues](https://github.com/ratnesh-kadam/
 
 ## LICENSE
 
-MIT &copy; 2019 Luiz Paulo "Bills"
-
----
-
-Made with ❤ in Brazil
+MIT
