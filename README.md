@@ -7,27 +7,23 @@
 
 - LAMP (Apache, MySQL, PHP)
 - [Composer](https://getcomposer.org/)
-- [Adminer](https://www.adminer.org/)
-- [NVM](https://github.com/nvm-sh/nvm)
-- [Node.js](https://nodejs.org/) (LTS)
-- [Xdebug](https://xdebug.org)
 - [WP-CLI](https://wp-cli.org/)
 - Git
-- SVN
-- [MailHog](https://github.com/mailhog/MailHog)
 
 ## Install
 
 1. Documentation on how to integrate github with GitPod - [https://www.gitpod.io/docs/github-integration](https://www.gitpod.io/docs/github-integration)
 
-2. For clean WordPress instance
+2. Install [GitPod Chrome extenstion](https://chrome.google.com/webstore/detail/gitpod-always-ready-to-co/dodmmooeoklaejobgleioelladacbeki)
+
+3. For clean WordPress instance
 - Just fork the repository and click on gitpod button appearing on github repository
 
-3. For theme and plugin
+4. For theme and plugin
 - Just copy the [`.gitpod.yml`](/.gitpod.yml) and [`.gitpod.dockerfile`](/.gitpod.dockerfile) to your project root directory and push to your remote repository.
 - If your project is a theme, change the `wp-setup-core` to `wp-setup-theme` or `wp-setup-plugin` in your `.gitpod.yml`.
 
-4. For theme and plugin, the `wp-setup-plugin` (or `wp-setup-theme`) will search for a `.init.sh` file in your project root directory and execute it (if exists). Then, you can use the `wp-cli` to install plugins, install themes, and [more](https://developer.wordpress.org/cli/commands/). Or create your own tasks. 
+5. For theme and plugin, the `wp-setup-plugin` (or `wp-setup-theme`) will search for a `.init.sh` file in your project root directory and execute it (if exists). Then, you can use the `wp-cli` to install plugins, install themes, and [more](https://developer.wordpress.org/cli/commands/). Or create your own tasks. 
 
 ```sh
 # .init.sh
@@ -57,7 +53,6 @@ password: password
   - `browse-wpadmin`: alias for `browse-url /wp-admin` (WordPress Admin Painel)
   - `browse-dbadmin`: alias for `browse-url /database` (to manage your database with Adminer)
   - `browse-phpinfo`: alias for `browse-url /phpinfo` (a page with `<?php phpinfo(); ?>`)
-  - `browse-emails`: open the MailHog client
   
 - You can setup your PHP on `.htaccess` file (eg: `php_value max_execution_time 600`)
 
