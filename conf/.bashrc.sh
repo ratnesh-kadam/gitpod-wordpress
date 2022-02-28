@@ -71,8 +71,7 @@ function wp-setup () {
   mkdir -p $PROJECT_PATH
   mv $HOME/workspace/* ${PROJECT_PATH}
   cd $PROJECT_PATH
-  echo $PROJECT_PATH
-  ls
+  npm install -g grunt
 
   # install project dependencies
   if [ -f composer.json ]; then
@@ -155,6 +154,8 @@ function wp-setup-core () {
   echo 'Creating phpinfo() page ...'
   mkdir ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/phpinfo/
   echo "<?php phpinfo(); ?>" > ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/phpinfo/index.php
+  
+  npm install -g grunt
   
   # finish
   shopt -u dotglob
