@@ -155,7 +155,7 @@ function wp-setup-core () {
   mkdir ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/phpinfo/
   echo "<?php phpinfo(); ?>" > ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/phpinfo/index.php
   
-  npm install -g grunt
+  npm install -g grunt-cli
   
   # finish
   shopt -u dotglob
