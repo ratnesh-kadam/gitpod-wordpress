@@ -71,7 +71,7 @@ function wp-setup () {
   mkdir -p $PROJECT_PATH
   mv $HOME/workspace/* ${PROJECT_PATH}
   cd $PROJECT_PATH
-  npm install -g grunt
+  npm install -g grunt-cli
 
   # install project dependencies
   if [ -f composer.json ]; then
